@@ -680,6 +680,9 @@ This callback type is called `requestCallback` and is displayed as a global symb
 | --- | --- | --- |
 | error | <code>error</code> |  |
 | status | <code>object</code> | an object with boolean values for each flag. |
+| status.cts | <code>Boolean</code> | CTS port value |
+| status.dsr | <code>Boolean</code> | DSR port value |
+| status.dcd | <code>Boolean</code> | DCD port value |
 
 -
 

@@ -602,7 +602,7 @@ NAN_METHOD(Get) {
   v8::Local<v8::Function> callback = info[1].As<v8::Function>();
 
   GetBaton* baton = new GetBaton();
-  memset(baton, 0, sizeof(SetBaton));
+  memset(baton, 0, sizeof(GetBaton));
   baton->fd = fd;
   baton->cts = false;
   baton->dsr = false;
@@ -619,7 +619,7 @@ NAN_METHOD(Get) {
 void EIO_AfterGet(uv_work_t* req) {
   Nan::HandleScope scope;
 
-  SetBaton* data = static_cast<SetBaton*>(req->data);
+  GetBaton* data = static_cast<GetBaton*>(req->data);
 
   v8::Local<v8::Value> argv[2];
 
@@ -721,6 +721,7 @@ extern "C" {
   void init(v8::Handle<v8::Object> target) {
     Nan::HandleScope scope;
     Nan::SetMethod(target, "set", Set);
+    Nan::SetMethod(target, "get", Get);
     Nan::SetMethod(target, "open", Open);
     Nan::SetMethod(target, "update", Update);
     Nan::SetMethod(target, "write", Write);

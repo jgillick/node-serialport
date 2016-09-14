@@ -246,7 +246,7 @@ void EIO_Set(uv_work_t* req) {
   }
 }
 
-void EIO_Set(uv_work_t* req) {
+void EIO_Get(uv_work_t* req) {
   SetBaton* data = static_cast<SetBaton*>(req->data);
 
   DWORD bits = 0;
